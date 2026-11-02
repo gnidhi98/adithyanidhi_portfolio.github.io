@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080909" />
+  <meta name="description" content="Adithya Nidhi — International Marketing & Brand Management portfolio." />
+  <title>Adithya Nidhi — Marketing & Brand Strategy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --bg: #080909;
+      --surface: #0d0f0f;
+      --surface-2: #111313;
+      --text: #eeeae0;
+      --muted: #98968f;
+      --dim: #5e5e5a;
+      --line: rgba(238,234,224,.13);
+      --accent: #d8cfb9;
+      --max: 1240px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: Manrope, sans-serif; }
+    button, a { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+    a { text-decoration: none; }
+    main { overflow: hidden; }
+    .grain { position: fixed; inset: 0; pointer-events: none; z-index: 20; opacity: .055; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E"); }
+    .nav { height: 78px; position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 4vw; background: linear-gradient(to bottom, rgba(8,9,9,.85), transparent); }
+    .logo { border: 0; background: none; font-size: 20px; font-weight: 700; letter-spacing: -.06em; color: var(--text); }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 27px; }
+    .nav-links button { border: 0; background: none; color: #aaa9a3; text-transform: uppercase; font: 400 10px "DM Mono", monospace; letter-spacing: .12em; }
+    .nav-links button:hover { color: var(--text); }
+    .nav-contact { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line)!important; padding: 10px 14px; border-radius: 999px; }
+    .menu-btn { display: none; border: 0; background: none; color: var(--text); }
+    .hero, .contact { position: relative; min-height: 100vh; }
+    .hero { display: flex; align-items: center; padding: 110px 7vw 80px; }
+    .fluid-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .9; pointer-events: none; }
+    .hero:after, .contact:after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 48%, transparent 0 18%, rgba(8,9,9,.18) 44%, var(--bg) 90%); pointer-events: none; }
+    .hero-grid { position: relative; z-index: 2; width: 100%; max-width: var(--max); margin: auto; display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 60px; }
+    .eyebrow, .section-label { color: var(--muted); text-transform: uppercase; font: 400 10px "DM Mono", monospace; letter-spacing: .14em; }
+    .eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 30px; }
+    .eyebrow span { width: 28px; height: 1px; background: var(--accent); }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero h1 { max-width: 800px; margin-bottom: 28px; font-size: clamp(62px, 8.5vw, 132px); line-height: .88; letter-spacing: -.075em; font-weight: 500; }
+    h1 em, h2 em { font-family: "Playfair Display", serif; font-weight: 500; }
+    .hero-lede { max-width: 540px; color: #aaa9a3; font-size: 15px; line-height: 1.8; }
+    .hero-actions { display: flex; gap: 10px; margin-top: 34px; }
+    .button { display: inline-flex; align-items: center; gap: 10px; padding: 13px 18px; border-radius: 999px; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+    .button-primary { background: var(--text); color: var(--bg); }
+    .button-ghost { border: 1px solid var(--line); }
+    .button:hover { transform: translateY(-2px); transition: .25s; }
+    .portrait-wrap { width: min(390px, 35vw); aspect-ratio: 1; position: relative; justify-self: end; }
+    .portrait { position: absolute; inset: 14%; border-radius: 48% 52% 53% 47% / 48% 42% 58% 52%; overflow: hidden; border: 1px solid rgba(238,234,224,.25); background: rgba(20,21,21,.7); }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2; }
+    .portrait-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8px; color: #b7b0a1; }
+    .portrait-placeholder span { font: 500 60px "Playfair Display", serif; }
+    .portrait-placeholder small { font: 9px "DM Mono", monospace; letter-spacing: .18em; color: var(--dim); }
+    .portrait-orbit { position: absolute; border: 1px solid rgba(216,207,185,.18); border-radius: 50%; }
+    .orbit-a { inset: 3%; transform: rotate(28deg) scaleY(.58); }
+    .orbit-b { inset: -7%; transform: rotate(-32deg) scaleY(.38); }
+    .portrait-caption { position: absolute; bottom: 4%; right: -5%; font: 9px "DM Mono", monospace; color: var(--muted); letter-spacing: .15em; }
+    .scroll-cue { position: absolute; z-index: 3; bottom: 30px; left: 7vw; display: flex; gap: 9px; align-items: center; border: 0; background: none; color: var(--dim); font: 9px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .12em; }
+    .section { max-width: var(--max); margin: auto; padding: 150px 5vw; }
+    .section-label { margin-bottom: 70px; }
+    .impact { border-top: 1px solid var(--line); }
+    .impact-intro, .section-heading { display: grid; grid-template-columns: 1.2fr .8fr; gap: 80px; align-items: end; }
+    .impact h2, .section-heading h2, .capability-layout h2 { font-size: clamp(50px, 6vw, 84px); line-height: .93; letter-spacing: -.065em; font-weight: 500; margin: 0; }
+    .impact-intro p, .section-heading p, .capability-layout > div > p { max-width: 430px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .impact-grid { margin-top: 100px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .impact-card { min-height: 260px; padding: 35px 30px; position: relative; border-right: 1px solid var(--line); }
+    .impact-card:last-child { border-right: 0; }
+    .impact-number { font-size: clamp(58px, 7vw, 94px); letter-spacing: -.08em; font-weight: 500; }
+    .impact-number span { font-size: .5em; color: var(--accent); vertical-align: top; margin-right: 4px; }
+    .impact-label { margin-top: 28px; font-size: 13px; }
+    .impact-note { margin-top: 5px; color: var(--dim); font: 10px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .08em; }
+    .card-index { position: absolute; top: 35px; right: 30px; color: var(--dim); font: 10px "DM Mono", monospace; }
+    .experience { max-width: none; background: var(--surface); }
+    .experience > *, .work > *, .education > * { max-width: var(--max); margin-left: auto; margin-right: auto; }
+    .experience-list { margin-top: 100px; border-top: 1px solid var(--line); }
+    .experience-item { padding: 48px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 20% 80%; }
+    .experience-meta { color: var(--dim); font: 10px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .07em; display: flex; flex-direction: column; gap: 9px; }
+    .experience-main { display: grid; grid-template-columns: 38% 62%; gap: 60px; }
+    .role-no { color: var(--accent); font: 10px "DM Mono", monospace; }
+    .experience h3 { font-size: 28px; letter-spacing: -.04em; margin: 12px 0 5px; font-weight: 500; }
+    .company { color: var(--muted); font-size: 12px; }
+    .experience ul { margin: 0; padding: 0; list-style: none; }
+    .experience li { color: #a6a59e; font-size: 13px; line-height: 1.8; margin-bottom: 17px; padding-left: 20px; position: relative; }
+    .experience li:before { content: "↗"; position: absolute; left: 0; color: var(--accent); }
+    .work { background: var(--bg); }
+    .project-list { margin-top: 90px; }
+    .project { width: 100%; display: grid; grid-template-columns: 9% 1fr 50px; gap: 30px; text-align: left; border: 0; border-top: 1px solid var(--line); background: none; padding: 40px 0; transition: .35s; color: inherit; }
+    .project:last-child { border-bottom: 1px solid var(--line); }
+    .project:hover { padding-left: 15px; background: linear-gradient(90deg, rgba(216,207,185,.035), transparent); }
+    .project-number { color: var(--dim); font: 11px "DM Mono", monospace; }
+    .project-top { display: flex; justify-content: space-between; color: var(--dim); font: 9px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .1em; }
+    .project h3 { max-width: 760px; margin: 20px 0 15px; font-size: clamp(24px, 3vw, 40px); letter-spacing: -.045em; line-height: 1.05; font-weight: 500; }
+    .project p { max-width: 760px; color: var(--muted); font-size: 13px; line-height: 1.75; }
+    .project-arrow { color: var(--accent); transition: .3s; }
+    .project:hover .project-arrow { transform: translate(5px,-5px); }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
+    .tags span { border: 1px solid var(--line); color: var(--muted); padding: 6px 9px; border-radius: 999px; font: 9px "DM Mono", monospace; }
+    .capabilities { background: var(--surface); max-width: none; }
+    .capability-layout { max-width: var(--max); margin: auto; display: grid; grid-template-columns: .75fr 1.25fr; gap: 100px; }
+    .capability-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 45px 60px; }
+    .capability-group h4 { color: var(--accent); font: 10px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 18px; }
+    .capability-item { color: #b2b0a9; border-bottom: 1px solid var(--line); padding: 10px 0; font-size: 12px; }
+    .education-list { margin-top: 80px; border-top: 1px solid var(--line); }
+    .education-row { display: grid; grid-template-columns: 15% 36% 27% 22%; gap: 20px; padding: 27px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .education-row span:first-child { color: var(--accent); font: 10px "DM Mono", monospace; }
+    .education-row strong { color: var(--text); font-weight: 500; }
+    .contact { padding: 150px 7vw 40px; background: #070808; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+    .contact-content { position: relative; z-index: 2; max-width: var(--max); width: 100%; margin: auto; }
+    .contact h2 { font-size: clamp(65px, 10vw, 150px); line-height: .84; letter-spacing: -.08em; font-weight: 500; margin: 55px 0 35px; }
+    .contact-content > p { max-width: 500px; color: var(--muted); line-height: 1.8; font-size: 14px; }
+    .contact-email { display: inline-flex; align-items: center; gap: 12px; margin-top: 35px; font-size: clamp(18px, 2.5vw, 30px); border-bottom: 1px solid var(--accent); padding-bottom: 8px; }
+    .contact-actions { display: flex; gap: 10px; margin-top: 45px; }
+    .contact-actions a { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 999px; padding: 11px 15px; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    footer { position: relative; z-index: 2; width: 100%; max-width: var(--max); margin: 100px auto 0; padding-top: 18px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--dim); font: 9px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .1em; }
+    .modal-backdrop { position: fixed; z-index: 100; inset: 0; background: rgba(0,0,0,.78); backdrop-filter: blur(15px); display: none; place-items: center; padding: 25px; }
+    .modal-backdrop.active { display: grid; }
+    .modal { position: relative; width: min(720px, 100%); background: #111313; border: 1px solid var(--line); padding: 55px; box-shadow: 0 30px 100px rgba(0,0,0,.6); }
+    .modal-close { position: absolute; right: 20px; top: 20px; background: none; border: 0; color: var(--muted); }
+    .modal-number { display: block; color: var(--accent); font: 10px "DM Mono", monospace; margin: 50px 0 20px; }
+    .modal h2 { font-size: 45px; line-height: 1; letter-spacing: -.05em; font-weight: 500; }
+    .modal p { color: var(--muted); line-height: 1.8; font-size: 14px; }
+    @media (max-width: 850px) {
+      .nav-links { position: fixed; top: 0; right: 0; width: min(320px, 85vw); height: 100vh; padding: 100px 30px; background: #0c0d0d; flex-direction: column; align-items: flex-start; transform: translateX(100%); transition: .3s; }
+      .nav-links.open { transform: translateX(0); }
+      .nav-links button { font-size: 12px; }
+      .menu-btn { display: block; position: relative; z-index: 2; }
+      .hero-grid, .impact-intro, .section-heading, .capability-layout { grid-template-columns: 1fr; gap: 45px; }
+      .portrait-wrap { width: min(310px, 72vw); justify-self: start; }
+      .hero { padding-left: 6vw; padding-right: 6vw; }
+      .impact-grid { grid-template-columns: 1fr; }
+      .impact-card { border-right: 0; border-bottom: 1px solid var(--line); }
+      .experience-item, .experience-main { grid-template-columns: 1fr; gap: 30px; }
+      .capability-grid { grid-template-columns: 1fr; }
+      .education-row { grid-template-columns: 1fr 1.5fr; }
+      .education-row span:last-child { display: none; }
+      footer { flex-direction: column; gap: 9px; }
+    }
+    @media (max-width: 520px) {
+      .section { padding: 100px 6vw; }
+      .section-label { margin-bottom: 50px; }
+      .hero h1 { font-size: 62px; }
+      .hero-lede { font-size: 13px; }
+      .hero-actions, .contact-actions { flex-wrap: wrap; }
+      .project { grid-template-columns: 35px 1fr; gap: 15px; }
+      .project-arrow { display: none; }
+      .project-top { flex-direction: column; gap: 6px; }
+      .modal { padding: 35px 25px; }
+      .modal h2 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="grain"></div>
+    <header class="nav">
+      <button class="logo" onclick="scrollToSection('home')">AN<span>.</span></button>
+      <nav id="nav-links" class="nav-links">
+        <button onclick="scrollToSection('experience')">experience</button>
+        <button onclick="scrollToSection('work')">work</button>
+        <button onclick="scrollToSection('capabilities')">capabilities</button>
+        <button onclick="scrollToSection('education')">education</button>
+        <button class="nav-contact" onclick="scrollToSection('contact')">Let’s talk <i data-lucide="arrow-up-right" style="width:15px;height:15px"></i></button>
+      </nav>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="Menu" id="menu-btn">
+        <i data-lucide="menu"></i>
+      </button>
+    </header>
+
+    <section id="home" class="hero">
+      <canvas id="fluid-canvas" class="fluid-canvas" aria-hidden="true"></canvas>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span></span> International Marketing & Brand Management</div>
+          <h1>Ideas that<br /><em>move markets.</em></h1>
+          <p class="hero-lede">Commercial thinking, with a strategic lens. I connect people, markets and brands to turn insight into meaningful business direction.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="./Adithya-Nidhi-CV.pdf" target="_blank" rel="noreferrer">View CV <i data-lucide="download" style="width:16px;height:16px"></i></a>
+            <a class="button button-ghost" href="https://www.linkedin.com/in/adithyanidhi02" target="_blank" rel="noreferrer">LinkedIn <i data-lucide="linkedin" style="width:16px;height:16px"></i></a>
+          </div>
+        </div>
+        <div class="portrait-wrap">
+          <div class="portrait-orbit orbit-a"></div>
+          <div class="portrait-orbit orbit-b"></div>
+          <div class="portrait">
+            <img src="./headshot.png" alt="Adithya Nidhi professional headshot" onerror="this.style.display='none'" />
+            <div class="portrait-placeholder">
+              <span>AN</span>
+              <small>HEADSHOT</small>
+            </div>
+          </div>
+          <div class="portrait-caption">MALMÖ · SWEDEN</div>
+        </div>
+      </div>
+      <button class="scroll-cue" onclick="scrollToSection('impact')">Scroll to explore <i data-lucide="chevron-down" style="width:16px;height:16px"></i></button>
+    </section>
+
+    <section id="impact" class="impact section">
+      <div class="section-label">01 / Impact</div>
+      <div class="impact-intro">
+        <h2>Strategy is only<br /><span>useful when it moves.</span></h2>
+        <p>Two years translating market insight into brand strategy and commercial outcomes across B2C and B2B real estate marketing.</p>
+      </div>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <div class="impact-number">20%</div>
+          <div class="impact-label">rise in customer inquiries</div>
+          <div class="impact-note">targeted campaigns</div>
+          <span class="card-index">01</span>
+        </div>
+        <div class="impact-card">
+          <div class="impact-number"><span>$</span>7.4M</div>
+          <div class="impact-label">portfolio coordinated</div>
+          <div class="impact-note">across functions</div>
+          <span class="card-index">02</span>
+        </div>
+        <div class="impact-card">
+          <div class="impact-number">100+</div>
+          <div class="impact-label">buyer journeys</div>
+          <div class="impact-note">managed end to end</div>
+          <span class="card-index">03</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="experience section">
+      <div class="section-label">02 / Experience</div>
+      <div class="section-heading">
+        <h2>Where insight<br /><em>became execution.</em></h2>
+        <p>Commercial experience shaped by customer understanding, cross-functional coordination and structured decision-making.</p>
+      </div>
+      <div class="experience-list">
+        <article class="experience-item">
+          <div class="experience-meta"><span>Aug 2026 — Present</span><span>Freelance</span></div>
+          <div class="experience-main">
+            <div>
+              <span class="role-no">01</span>
+              <h3>Digital Marketing & Web Designer</h3>
+              <div class="company">Freelance</div>
+            </div>
+            <ul>
+              <li>Digital Content & Marketing: Designed and executed organic Instagram marketing and content generation for niche brands, building targeted content and brand engagement.</li>
+              <li>Web Development & Portfolio Design: Built, designed, and launched 5+ custom websites and professional portfolios, improving site loading speeds by 15% and boosting client inquiry rates.</li>
+              <li>Content Strategy & Creation: Developed content marketing strategies, writing and producing high-converting multimedia assets across digital platforms.</li>
+              <li>Client Management & Delivery: Managed end-to-end project lifecycles (scoping, requirements, timelines) across multiple concurrent clients, ensuring 100% on-time delivery and a 95% client satisfaction rate.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-meta"><span>Jul 2023 — Aug 2025</span><span>Trivandrum, India</span></div>
+          <div class="experience-main">
+            <div>
+              <span class="role-no">02</span>
+              <h3>Assistant Brand Manager</h3>
+              <div class="company">Heather Constructions</div>
+            </div>
+            <ul>
+              <li>Analyzed customer trends and competitor pricing to launch targeted campaigns, contributing to a 20% increase in customer inquiries and faster phase-one sales.</li>
+              <li>Managed end-to-end B2C buyer journeys for 100+ residential units while coordinating B2B partnerships and stakeholder communication.</li>
+              <li>Synchronized cross-functional updates across internal divisions for a $7.4M real estate portfolio, reducing project-delivery communication delays by 17%.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-meta"><span>Jan 2023 — Jul 2023</span><span>Trivandrum, India</span></div>
+          <div class="experience-main">
+            <div>
+              <span class="role-no">03</span>
+              <h3>Management Intern / Trainee</h3>
+              <div class="company">Heather Constructions</div>
+            </div>
+            <ul>
+              <li>Compiled four monthly executive management reports tracking asset utilization and marketing KPIs across two development projects.</li>
+              <li>Conducted SWOT and market-gap analyses on five local competitors to support premium brand positioning.</li>
+              <li>Coordinated cross-functional inputs from six departments to compile government tender reports for a public project valued up to $10M.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="work" class="work section">
+      <div class="section-label">03 / Selected work</div>
+      <div class="section-heading">
+        <h2>Selected<br /><em>strategic work.</em></h2>
+        <p>Independent and academic projects connecting consumer research, brand strategy and market thinking.</p>
+      </div>
+      <div class="project-list">
+        <button class="project" onclick="openProject(0)">
+          <span class="project-number">01</span>
+          <div class="project-center">
+            <div class="project-top"><span>Consulting</span><span>Dec 2025 — Jan 2026</span></div>
+            <h3>Redefining Swedish retail stores as meal destinations</h3>
+            <p>Developed a strategic technology pathway to transform traditional Swedish grocery retailers into technologically augmented “meal destinations,” reframing the in-store experience around convenience and discovery.</p>
+            <div class="tags"><span>Retail strategy</span><span>Technology</span><span>Customer experience</span></div>
+          </div>
+          <i data-lucide="move-up-right" class="project-arrow"></i>
+        </button>
+
+        <button class="project" onclick="openProject(1)">
+          <span class="project-number">02</span>
+          <div class="project-center">
+            <div class="project-top"><span>Leadership</span><span>Mar 2025 — Jun 2025</span></div>
+            <h3>Brand strategy consulting project</h3>
+            <p>Led a five-person team through market research and brand strategy recommendations — coordinating task allocation, data analysis, report preparation, and presentation of findings.</p>
+            <div class="tags"><span>Brand strategy</span><span>Research</span><span>Team leadership</span></div>
+          </div>
+          <i data-lucide="move-up-right" class="project-arrow"></i>
+        </button>
+
+        <button class="project" onclick="openProject(2)">
+          <span class="project-number">03</span>
+          <div class="project-center">
+            <div class="project-top"><span>Research</span><span>Sep 2024 — Dec 2024</span></div>
+            <h3>Leadership & performance measurement</h3>
+            <p>Researched the role of leadership styles and performance-measurement systems in driving strategy implementation across four corporate case studies.</p>
+            <div class="tags"><span>Leadership</span><span>Performance</span><span>Strategy</span></div>
+          </div>
+          <i data-lucide="move-up-right" class="project-arrow"></i>
+        </button>
+
+        <button class="project" onclick="openProject(3)">
+          <span class="project-number">04</span>
+          <div class="project-center">
+            <div class="project-top"><span>Market entry</span><span>May 2024 — Jul 2024</span></div>
+            <h3>Trader Joe’s: a market-entry strategy for India</h3>
+            <p>Authored a market-entry strategy and financial feasibility study for adapting a $15B+ grocery brand to the Indian retail sector, covering positioning, format, and go-to-market sequencing.</p>
+            <div class="tags"><span>Market entry</span><span>GTM</span><span>Financial feasibility</span></div>
+          </div>
+          <i data-lucide="move-up-right" class="project-arrow"></i>
+        </button>
+      </div>
+    </section>
+
+    <section id="capabilities" class="capabilities section">
+      <div class="section-label">04 / Capabilities</div>
+      <div class="capability-layout">
+        <div>
+          <h2>A practical<br /><em>toolkit.</em></h2>
+          <p>Built through consulting projects, internships and cross-functional roles across Sweden and India.</p>
+        </div>
+        <div class="capability-grid">
+          <div class="capability-group">
+            <h4>Strategy</h4>
+            <div class="capability-item">Go-to-Market strategy</div>
+            <div class="capability-item">Brand positioning</div>
+            <div class="capability-item">Brand & marketing strategy</div>
+            <div class="capability-item">Strategic thinking</div>
+          </div>
+          <div class="capability-group">
+            <h4>Market</h4>
+            <div class="capability-item">Market & consumer research</div>
+            <div class="capability-item">Consumer behaviour analysis</div>
+            <div class="capability-item">Trend analysis</div>
+            <div class="capability-item">Data analysis & interpretation</div>
+          </div>
+          <div class="capability-group">
+            <h4>Execution</h4>
+            <div class="capability-item">Campaign management</div>
+            <div class="capability-item">Stakeholder management</div>
+            <div class="capability-item">Project management</div>
+            <div class="capability-item">Budget & portfolio management</div>
+          </div>
+          <div class="capability-group">
+            <h4>Communication</h4>
+            <div class="capability-item">Strategic communications</div>
+            <div class="capability-item">Cross-functional team leadership</div>
+            <div class="capability-item">PowerPoint & Canva</div>
+            <div class="capability-item">Excel (advanced)</div>
+          </div>
+          <div class="capability-group">
+            <h4>Analytics</h4>
+            <div class="capability-item">Google Analytics</div>
+            <div class="capability-item">MS Office</div>
+            <div class="capability-item">Performance reporting</div>
+            <div class="capability-item">Structured business analysis</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="education section">
+      <div class="section-label">05 / Academic foundation</div>
+      <div class="section-heading">
+        <h2>Business thinking<br /><em>with range.</em></h2>
+      </div>
+      <div class="education-list">
+        <div class="education-row"><span>2025–26</span><strong>MSc International Marketing & Brand Management</strong><span>Lund University</span><span>Lund, Sweden</span></div>
+        <div class="education-row"><span>2024–25</span><strong>Master's in Business Administration</strong><span>O.P. Jindal Global University</span><span>Sonipat, India</span></div>
+        <div class="education-row"><span>2023–24</span><strong>Diploma in Operations Management</strong><span>Acharya Nagarjuna University</span><span>Guntur, India</span></div>
+        <div class="education-row"><span>2021–23</span><strong>Bachelor's in Botany</strong><span>University of Kerala</span><span>Trivandrum, India</span></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <canvas id="fluid-canvas-contact" class="fluid-canvas" aria-hidden="true"></canvas>
+      <div class="contact-content">
+        <div class="section-label">06 / Next</div>
+        <h2>Ready for the<br /><em>next challenge?</em></h2>
+        <p>Open to opportunities across marketing, brand management, strategy, market research and growth-oriented roles.</p>
+        <a class="contact-email" href="mailto:adithyanidhi2002@gmail.com">adithyanidhi2002@gmail.com <i data-lucide="arrow-up-right"></i></a>
+        <div class="contact-actions">
+          <a href="./Adithya-Nidhi-CV.pdf" target="_blank" rel="noreferrer"><i data-lucide="download" style="width:16px;height:16px"></i> Download CV</a>
+          <a href="https://www.linkedin.com/in/adithyanidhi02" target="_blank" rel="noreferrer"><i data-lucide="linkedin" style="width:16px;height:16px"></i> LinkedIn</a>
+          <a href="mailto:adithyanidhi2002@gmail.com"><i data-lucide="mail" style="width:16px;height:16px"></i> Email</a>
+        </div>
+      </div>
+      <footer>
+        <span>© <span id="year"></span> Adithya Nidhi</span>
+        <span>International Marketing · Brand Strategy · Growth</span>
+        <span>Malmö, Sweden</span>
+      </footer>
+    </section>
+
+    <div id="modal-backdrop" class="modal-backdrop" onclick="closeModal()">
+      <div class="modal" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()"><i data-lucide="x"></i></button>
+        <div class="project-top"><span id="modal-category"></span><span id="modal-period"></span></div>
+        <span id="modal-number" class="modal-number"></span>
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+        <div id="modal-tags" class="tags"></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    lucide.createIcons();
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('nav-links').classList.remove('open');
+    }
+
+    function toggleMenu() {
+      document.getElementById('nav-links').classList.toggle('open');
+    }
+
+    const projectsData = [
+      {
+        number: "01",
+        category: "Consulting",
+        period: "Dec 2025 — Jan 2026",
+        title: "Redefining Swedish retail stores as meal destinations",
+        description: "Developed a strategic technology pathway to transform traditional Swedish grocery retailers into technologically augmented “meal destinations,” reframing the in-store experience around convenience and discovery.",
+        tags: ["Retail strategy", "Technology", "Customer experience"]
+      },
+      {
+        number: "02",
+        category: "Leadership",
+        period: "Mar 2025 — Jun 2025",
+        title: "Brand strategy consulting project",
+        description: "Led a five-person team through market research and brand strategy recommendations — coordinating task allocation, data analysis, report preparation, and presentation of findings.",
+        tags: ["Brand strategy", "Research", "Team leadership"]
+      },
+      {
+        number: "03",
+        category: "Research",
+        period: "Sep 2024 — Dec 2024",
+        title: "Leadership & performance measurement",
+        description: "Researched the role of leadership styles and performance-measurement systems in driving strategy implementation across four corporate case studies.",
+        tags: ["Leadership", "Performance", "Strategy"]
+      },
+      {
+        number: "04",
+        category: "Market entry",
+        period: "May 2024 — Jul 2024",
+        title: "Trader Joe’s: a market-entry strategy for India",
+        description: "Authored a market-entry strategy and financial feasibility study for adapting a $15B+ grocery brand to the Indian retail sector, covering positioning, format, and go-to-market sequencing.",
+        tags: ["Market entry", "GTM", "Financial feasibility"]
+      }
+    ];
+
+    function openProject(index) {
+      const p = projectsData[index];
+      document.getElementById('modal-number').textContent = p.number;
+      document.getElementById('modal-category').textContent = p.category;
+      document.getElementById('modal-period').textContent = p.period;
+      document.getElementById('modal-title').textContent = p.title;
+      document.getElementById('modal-description').textContent = p.description;
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = '';
+      p.tags.forEach(t => {
+        const s = document.createElement('span');
+        s.textContent = t;
+        tagsContainer.appendChild(s);
+      });
+      document.getElementById('modal-backdrop').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('modal-backdrop').classList.remove('active');
+    }
+
+    // Fluid Canvas Animation
+    function initCanvas(canvasId) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      let raf, dpr, width, height;
+      const pointer = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };
+      const nodes = Array.from({ length: 85 }, (_, i) => ({
+        angle: (i / 85) * Math.PI * 2 + Math.random() * 0.25,
+        radius: 80 + Math.random() * 520,
+        speed: 0.00015 + Math.random() * 0.00035,
+        wobble: Math.random() * Math.PI * 2,
+        size: 0.5 + Math.random() * 1.6
+      }));
+
+      const resize = () => {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = canvas.parentElement.clientWidth;
+        height = canvas.parentElement.clientHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      };
+
+      const move = (e) => {
+        const r = canvas.parentElement.getBoundingClientRect();
+        pointer.tx = (e.clientX - r.left) / r.width;
+        pointer.ty = (e.clientY - r.top) / r.height;
+      };
+
+      const draw = (time) => {
+        pointer.x += (pointer.tx - pointer.x) * 0.035;
+        pointer.y += (pointer.ty - pointer.y) * 0.035;
+        ctx.clearRect(0, 0, width, height);
+
+        const cx = width * (0.5 + (pointer.x - 0.5) * 0.06);
+        const cy = height * (0.5 + (pointer.y - 0.5) * 0.06);
+        const maxR = Math.max(width, height) * 0.62;
+
+        ctx.globalCompositeOperation = "screen";
+
+        for (let j = 0; j < 11; j++) {
+          ctx.beginPath();
+          const phase = time * 0.00018 * (j % 2 ? -1 : 1) + j * 0.55;
+          for (let k = 0; k <= 180; k++) {
+            const t = k / 180;
+            const a = t * Math.PI * 2 + phase;
+            const rr = 90 + t * maxR * 0.82;
+            const flow = Math.sin(a * 3.1 + time * 0.00035 + j) * 24;
+            const pull = Math.sin(a - pointer.x * 5) * 34 * (1 - t);
+            const x = cx + Math.cos(a) * (rr + flow + pull);
+            const y = cy + Math.sin(a) * (rr * 0.48 + flow * 0.55) + Math.sin(t * 12 + phase) * 18;
+            if (k === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.strokeStyle = `rgba(214, 203, 175, ${0.035 + j * 0.004})`;
+          ctx.lineWidth = 0.65 + (j % 3) * 0.2;
+          ctx.stroke();
+        }
+
+        nodes.forEach((n, i) => {
+          n.angle += n.speed * 10;
+          const wobble = Math.sin(time * 0.0004 + n.wobble) * 20;
+          const r = Math.min(n.radius, maxR) + wobble;
+          const a = n.angle + Math.sin(time * 0.0002 + i) * 0.18;
+          const x = cx + Math.cos(a) * r;
+          const y = cy + Math.sin(a) * r * 0.48;
+          const distance = Math.hypot(x - pointer.x * width, y - pointer.y * height);
+          const glow = Math.max(0, 1 - distance / 260);
+          ctx.beginPath();
+          ctx.arc(x, y, n.size + glow * 1.7, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(230, 221, 198, ${0.10 + glow * 0.45})`;
+          ctx.fill();
+        });
+
+        raf = requestAnimationFrame(draw);
+      };
+
+      resize();
+      window.addEventListener("resize", resize);
+      window.addEventListener("pointermove", move);
+      raf = requestAnimationFrame(draw);
+    }
+
+    initCanvas("fluid-canvas");
+    initCanvas("fluid-canvas-contact");
+  </script>
+</body>
+</html>
